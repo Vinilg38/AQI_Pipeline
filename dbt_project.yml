@@ -1,0 +1,39 @@
+# dbt_project.yml
+# This file tells dbt how to run our data pipeline and where to find our models.
+
+# Name your project! The name should contain only lowercase characters and underscores.
+name: 'AQI'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+# It MUST match the name of the profile in your profiles.yml file.
+profile: 'AQI'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models for the Medallion Architecture
+# This section tells dbt to place the output of each model into a
+# schema that matches our bronze, silver, and gold layers.
+models:
+  AQI:  # This must match the name of your project
+    bronze:
+      +schema: bronze
+      +materialized: table
+    silver:
+      +schema: silver
+      +materialized: table
+    gold:
+      +schema: gold
+      +materialized: table
