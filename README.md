@@ -45,7 +45,7 @@ To run this project, you need to have **dbt**, **PostgreSQL**, and **Apache Airf
 
 3.  **Automate with Airflow:**
     * Set your `AIRFLOW_HOME` and start Airflow's services.
-    * The `aqi_pipeline.py` DAG will then automate all three dbt commands in the correct order.
+    * The `aqi.py` DAG will then automate all three dbt commands in the correct order.
 
 ---
 ### Dashboard
