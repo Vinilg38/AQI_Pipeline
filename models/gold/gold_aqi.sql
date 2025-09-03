@@ -6,6 +6,7 @@ SELECT
     -- Extract the date from the timestamp
     TO_CHAR(report_date, 'YYYY-MM') AS report_month,
     state,
+    area,
     -- Calculate key metrics using the cleaned aqi value
     AVG(cleaned_aqi_value) AS avg_daily_aqi,
     MAX(cleaned_aqi_value) AS max_daily_aqi,
@@ -16,7 +17,7 @@ SELECT
 FROM
     {{ ref('silver_aqi') }}
 GROUP BY
-    1, 2
+    1, 2,3
 ORDER BY
- 1,2
+    1,2,3
 
