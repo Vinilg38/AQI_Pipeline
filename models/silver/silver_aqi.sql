@@ -1,4 +1,4 @@
--- models/silver/stg_aqi.sql
+
 -- This model cleans and standardizes the raw data from the bronze layer.
 
 {{ config(
@@ -6,13 +6,11 @@
 ) }}
 
 WITH source_data AS (
-    -- Reference the aqi.csv file loaded by dbt seed
     SELECT * FROM {{ ref('aqi') }}
 ),
 
 renamed_and_cleaned AS (
     SELECT
-        -- Standardizing column names for clarity
         TO_DATE("date", 'DD-MM-YYYY') AS report_date,
         "state" AS state,
         "area" AS area,

@@ -1,17 +1,16 @@
-from airflow.sdk import DAG  # Import DAG from airflow.sdk per Airflow 3.0
+from airflow.sdk import DAG
 from airflow.operators.bash import BashOperator
-from pendulum import datetime, timezone  # Use pendulum's datetime for timezone-aware start_date
+from pendulum import datetime, timezone
 
-# Define the absolute path to your dbt project directory
+
 DBT_PROJECT_DIR = '/Users/vinilg7/PycharmProjects/AQI/AQI'
-DBT_EXECUTABLE = '/Users/vinilg7/PycharmProjects/AQI/AQI/venv/bin/dbt'
 
-# Define the local timezone
+
 local_tz = timezone("Asia/Kolkata")
 with DAG(
     dag_id='aqi_medallion_pipeline',
-    start_date=datetime(2025, 1, 1, tz=local_tz),  # pendulum datetime with tz
-    schedule=None,  # Airflow 3.0 replaces schedule_interval with schedule
+    start_date=datetime(2025, 1, 1, tz=local_tz),
+    schedule=None,
     catchup=False,
     tags=['dbt', 'data-pipeline']
 ) as dag:
