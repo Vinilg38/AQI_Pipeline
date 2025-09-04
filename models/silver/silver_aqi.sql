@@ -18,11 +18,8 @@ renamed_and_cleaned AS (
         "area" AS area,
         "number_of_monitoring_stations" AS num_stations,
         "prominent_pollutants" AS pollutant_name,
-        "aqi_value" AS aqi_value,
         "air_quality_status" AS aqi_status,
         "unit" AS unit,
-        "note" AS note,
-        -- Correctly handle potential missing values in aqi_value
         COALESCE("aqi_value", 0) AS cleaned_aqi_value
     FROM source_data
 )
