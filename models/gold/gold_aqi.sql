@@ -3,7 +3,7 @@
 ) }}
 --The gold layer is for deriving key metrics for BI
 SELECT
-    TO_CHAR(report_date, 'YYYY-MM') AS report_month,
+    report_date,
     state,
     area,
     AVG(cleaned_aqi_value) AS avg_daily_aqi,
